@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Boutique</title>
+  <link rel="stylesheet" href="boutique_simple.css">
+</head>
+<body>
+  <div class="boutique">
+    <header class="topbar">
+      <h1>Boutique</h1>
+      <div class="account">
+        <div>Solde : <strong id="balance">100 000,00 $</strong></div>
+        <div>Panier : <strong id="cart-count">0</strong> article(s)</div>
+      </div>
+    </header>
+
+    <div class="filtres">
+</div>
+
+    <section class="panier">
+      <div class="panier-entete">
+        <h2>Mon panier</h2>
+        <span id="cart-total">Total : 0,00 $</span>
+      </div>
+      <div id="cart-items">Les articles ajoutés seront comptés dans le total.</div>
+      <button id="buy-button" type="button" onclick="acheter()">Valider l'achat</button>
+      <p id="message" aria-live="polite"></p>
+    </section>
+
+    <h2>Articles</h2>
+    <div class="grille" id="product-grid">
+      <div class="carte" data-id="1" data-price="236758.34">
+        <div class="image"></div>
+        <div class="nom">1</div>
+        <div class="rang">Covert</div>
+        <div class="prix">236,758.34 $</div>
+        <button class="add-btn" type="button" onclick="ajouter(236758.34)">Ajouter au panier</button>
+        <button onclick="retirer(236758.34)">Retirer</button>
+      </div>
+      <div class="carte" data-id="2" data-price="99990.00">
+        <div class="image"></div>
+        <div class="nom">2</div>
+        <div class="rang">Remarkable</div>
+        <div class="prix">99,990.00 $</div>
+        <button class="add-btn" type="button" onclick="ajouter(99990.00)">Ajouter au panier</button>
+        <button onclick="retirer(99990.00)">Retirer</button>
+      </div>
+      <div class="carte" data-id="3" data-price="74104.90">
+        <div class="image"></div>
+        <div class="nom">3</div>
+        <div class="rang">Remarkable</div>
+        <div class="prix">74,104.90 $</div>
+        <button class="add-btn" type="button" onclick="ajouter(74104.90)">Ajouter au panier</button>
+        <button onclick="retirer(74104.90)">Retirer</button>
+      </div>
+      <div class="carte" data-id="4" data-price="68932.09">
+        <div class="image"></div>
+        <div class="nom">4</div>
+        <div class="rang">Remarkable</div>
+        <div class="prix">68,932.09 $</div>
+        <button class="add-btn" type="button" onclick="ajouter(68932.09)">Ajouter au panier</button>
+        <button onclick="retirer(68932.09)">Retirer</button>
+      </div>
+      <div class="carte" data-id="5" data-price="2117.26">
+        <div class="image"></div>
+        <div class="nom">5</div>
+        <div class="rang">Extraordinary</div>
+        <div class="prix">2,117.26 $</div>
+        <button class="add-btn" type="button" onclick="ajouter(2117.26)">Ajouter au panier</button>
+        <button onclick="retirer(2117.26)">Retirer</button>
+      </div>
+      <div class="carte" data-id="6" data-price="26677.76">
+        <div class="image"></div>
+        <div class="nom">6</div>
+        <div class="rang">Remarkable</div>
+        <div class="prix">26,677.76 $</div>
+        
+        <button class="add-btn" type="button" onclick="ajouter(26677.76)">Ajouter au panier</button>
+        <button onclick="retirer(26677.76)">Retirer</button>
+      </div>
+      <div class="carte" data-id="7" data-price="22871.51">
+        <div class="image"></div>
+        <div class="nom">7</div>
+        <div class="rang">Covert</div>
+        <div class="prix">22,871.51 $</div>
+        <button class="add-btn" type="button" onclick="ajouter(22871.51)">Ajouter au panier</button>
+        <button onclick="retirer(22871.51)">Retirer</button>
+      </div>
+      <div class="carte" data-id="8" data-price="2022.94">
+        <div class="image"></div>
+        <div class="nom">8</div>
+        <div class="rang">Extraordinary</div>
+        <div class="prix">2,022.94 $</div>
+        <button class="add-btn" type="button" onclick="ajouter(2022.94)">Ajouter au panier</button>
+        <button onclick="retirer(2022.94)">Retirer</button>
+      </div>
+      <div class="carte" data-id="9" data-price="21549.54">
+        <div class="image"></div>
+        <div class="nom">9</div>
+        <div class="rang">Base Grade</div>
+        <div class="prix">21,549.54 $</div>
+        <button class="add-btn" type="button" onclick="ajouter(21549.54)">Ajouter au panier</button>
+        <button onclick="retirer(21549.54)">Retirer</button>
+      </div>
+      <div class="carte" data-id="10" data-price="21172.15">
+        <div class="image"></div>
+        <div class="nom">10</div>
+        <div class="rang">Base Grade</div>
+        <div class="prix">21,172.15 $</div>
+        
+        <button class="add-btn" type="button" onclick="ajouter(21172.15)">Ajouter au panier</button>
+        <button onclick="retirer(21172.15)">Retirer</button>
+      </div>
+
+    </div>
+  </div>
+
+<script>
+
+let solde = 1000000000000000;
+let total = 0;
+let nombre = 0;
+
+function ajouter(prix) {
+    total = total + prix;
+    nombre++;
+
+    afficher();
+}
+
+function retirer(prix) {
+    if (nombre > 0 && total >= prix) {
+        total = total - prix;
+        nombre--;
+
+        afficher();
+    }
+}
+
+function afficher() {
+    document.getElementById("cart-total").textContent = "Total : " + total + " $";
+    document.getElementById("cart-count").textContent = nombre;
+    document.getElementById("cart-items").textContent = nombre + " article(s) dans le panier";
+}
+
+function acheter() {
+    if (total > 0 && total <= solde) {
+        solde = solde - total;
+        total = 0;
+        nombre = 0;
+
+        afficher();
+
+        document.getElementById("balance").textContent = solde + " $";
+        document.getElementById("message").textContent = "Achat effectué !";
+    } else {
+        document.getElementById("message").textContent = "Panier vide ou solde insuffisant.";
+    }
+}
+
+
+</script>
+</body>
+</html>

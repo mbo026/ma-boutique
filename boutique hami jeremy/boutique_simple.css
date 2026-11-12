@@ -1,0 +1,118 @@
+
+body {
+  margin: 0;
+  padding: 15px;
+  background: #171717;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+.boutique { max-width: 1200px; margin: auto; }
+.filtres {
+  background: #252525;
+  border: 1px solid #3a3a3a;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+input, select, button {
+  background: #303030;
+  color: white;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 9px;
+}
+input { width: 40%; }
+.pills { margin-top: 12px; }
+.pills button { border: 0; border-radius: 15px; margin: 3px; }
+.grille {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+.carte {
+  background: #292929;
+  border: 1px solid #3b3b3b;
+  border-top: 2px solid #e84b58;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.image {
+  height: 90px;
+  background: #303030;
+  border-radius: 5px;
+  margin-bottom: 8px;
+}
+.nom { font-size: 12px; font-weight: bold; line-height: 1.4; }
+.rang { color: #999; font-size: 11px; margin: 5px 0; }
+.prix { font-size: 13px; font-weight: bold; }
+{ .grille { grid-template-columns: repeat(5, 1fr); } }
+ { .grille { grid-template-columns: repeat(3, 1fr); } input { width: 90%; } }
+ { .grille { grid-template-columns: repeat(2, 1fr); } }
+
+
+/* En-tete et solde */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+.topbar h1 { margin: 0; font-size: 24px; }
+.account {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  background: #252525;
+  border: 1px solid #3a3a3a;
+  border-radius: 8px;
+  padding: 12px;
+}
+.account strong { color: #70d69a; }
+
+.panier {
+  background: #252525;
+  border: 1px solid #3a3a3a;
+  border-radius: 8px;
+  padding: 14px;
+  margin: 15px 0;
+}
+.panier-entete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.panier h2, .boutique > h2 { margin: 0 0 10px; }
+.panier-ligne {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid #3b3b3b;
+}
+#cart-total { font-weight: bold; }
+#buy-button, .add-btn {
+  cursor: pointer;
+  background: #d94352;
+  border: 0;
+  margin-top: 8px;
+}
+#buy-button:disabled { opacity: .45; cursor: not-allowed; }
+#message { color: #70d69a; margin-bottom: 0; min-height: 18px; }
+.carte[hidden] { display: none; }
+.carte .add-btn { width: 100%; font-size: 11px; }
+.carte .nom { font-size: 15px; margin: 8px 0; }
+ {
+  .topbar { align-items: flex-start; }
+  .account { width: 100%; }
+}
+button {
+    position: relative;
+    cursor: pointer;
+    pointer-events: auto;
+}
